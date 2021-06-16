@@ -1,11 +1,15 @@
 # Hotel-Management
 
 Instructions 
+
 1.Set up your virtual environment 
   - $ virtualenv venv 
   - $ source venv/bin/activate
+
 2.Install Django 
   - $ python -m pip install Django
+
+
 3.Set up database in HotelManagement/setting.py 
 <img width="726" alt="Screen Shot 2564-06-16 at 23 14 00" src="https://user-images.githubusercontent.com/48642147/122255660-8a27af80-cef8-11eb-8705-a745131faacc.png">
 **Note if you are using mySQL server via xampp, type is command first **

@@ -20,6 +20,7 @@ Instructions
   - $ echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.bash_profile
   - $ export PATH="/usr/local/opt/mysql-client/bin:$PATH"
   - $ pip install mysqlclient
+
 After finish setting up the database
 
   - Add information from the hotel.sql file to your database 

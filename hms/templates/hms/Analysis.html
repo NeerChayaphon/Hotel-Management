@@ -1,0 +1,116 @@
+{%  extends 'hms/base.html' %}
+{% load static %}
+{% block content %}
+
+
+  <br>
+    <div class="col-md">
+      <div class="card card-header bg-danger ">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-left">
+              <h3 class="text-left text-white">Analysis Report</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <!-- Table 1 -->
+        <div class="col-md-12 bg-detail-2">
+          <div class="card card-body">
+            <table class="table table-striped">              
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-left detail">Number of booking for each person and sort from High to Low</h4>
+                </div>
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Number of booking</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in first %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.Firstname}}</td>
+                    <td>{{i.Lastname}}</td>
+                    <td>{{i.NumberofBooking}}</td>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </div>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Table 2 -->
+        <div class="col-md-12 bg-detail-2">
+          <div class="card card-body">
+            <table class="table table-striped">              
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-left detail">Amount of room for each type that have been booked in 2021</h4>
+                </div>
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">RoomType</th>
+                    <th scope="col">Number of room</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for j in second %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{j.RoomType}}</td>
+                    <td>{{j.Rcount}}</td>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </div>
+            </table>
+          </div>
+        </div>
+        <!-- Table 3 -->
+        <div class="col-md-12 bg-detail-3">
+          <div class="card card-body">
+            <table class="table table-striped">
+              <div class="row">
+                <div class="col-md-12">
+                  <h4 class="text-left detail">Number of staff categorize by gender of each position</h4>
+                </div>
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Male</th>
+                    <th scope="col">Female</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for k in third %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{k.Position}}</td>
+                    <td>{{k.Male}}</td>
+                    <td>{{k.Female}}</td>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </div>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </br>
+</html>
+
+{% endblock content %}

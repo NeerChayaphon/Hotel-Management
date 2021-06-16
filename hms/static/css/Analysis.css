@@ -1,0 +1,46 @@
+body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+  }
+
+  .detail {
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    color: rgb(25, 25, 27);
+  }
+  
+  .col-md-12{
+    padding: 15px;
+  }
+
+  .bg-detail-1{
+    background-color: rgb(247, 193, 193);
+  }
+
+  .bg-detail-2{
+    background-color: rgb(247, 156, 156);
+  }
+
+  .bg-detail-3{
+    background-color: rgb(253, 112, 112);
+  }
+
+  .bg-danger{
+    margin-bottom: -27px;
+    height: 85px;
+  }
+
+  .text-white{
+    font-weight: 800;
+    font-size: 40px;
+    margin: 0 auto;
+  }
+  
+  .card{
+    background-color: white;
+  }
+
+  
+

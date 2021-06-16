@@ -1,0 +1,220 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+    <title>Payment</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/checkout/">
+    <!-- Bootstrap core CSS -->
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static '/css/form-validation.css' %}" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <div class="area">
+      <header class="top-header">
+        <p class="menu-item brand">Payment Method</p>
+      </header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted-1">Your room</span>
+              <!-- <span class="badge badge-secondary badge-pill">{{Room}}</span> -->
+            </h4>
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-2-1">{{TypeRoom}} x{{Room}}</h6>
+                  <small>From {{CheckInDate}} ⮕ {{CheckOutDate}} </small>
+                  
+                </div>
+                <span class="text-muted">{{RoomPrice}}฿</span>
+              </li>
+              {% if EB == "on" %}
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-2-1">Extra bed x{{NEB}}</h6>
+                  </div>
+                  <span class="text-muted">{{Bprice}}฿</span>
+                </li>
+                
+              {% else %}
+               
+              {% endif %}
+
+              {% if BF == "on" %}
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                  <h6 class="my-2-1">Breakfast x{{NBF}}</h6>
+                </div>
+                <span class="text-muted">{{BFprice}}฿</span>
+              </li>
+              
+            {% else %}
+             
+            {% endif %}
+            
+            {% if promo == 1 %}
+              <li class="list-group-item d-flex justify-content-between ">
+                <div class="text-success">
+                  <h6 class="my-2-1">Promo code ({{promoD.discountcode}} {{promoD.discountpercent}}%)</h6>
+                </div>
+                <span class="text-success">-{{promoP}}฿</span>
+              </li>
+
+            {% else %}
+             
+            {% endif %}
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Total</span>
+                <strong>{{Total}}฿</strong>
+              </li>
+            </ul>
+      
+            <form class="card p-2" action="." method='POST'> {% csrf_token %}
+              <div class="input-group">
+                <input name = "promo" type="text" class="form-control" placeholder="Promo code">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-secondary">Redeem</button>
+                </div>
+              </div>
+            </form>
+
+            {% if promo == 2 %}
+            <div class="alert alert-danger" role="alert">
+              Wrong or expire code
+            </div>
+            {% endif %}
+            
+          </div>
+          <div class="col-md-8 order-md-1">
+            <h4 class="mb-3-1">Billing Information</h4>
+            <form class="needs-validation" novalidate action="." method='POST'> {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName">First name</label>
+                  <input name="firstName" type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    Valid first name is required.
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName">Last name</label>
+                  <input name="lastName" type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+                </div>
+              </div>
+      
+              <div class="mb-3">
+                <label for="username">Username</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input name="username" type="text" class="form-control" id="username" placeholder="Username" value = "{{member.username}}"required>
+                  <div class="invalid-feedback" style="width: 100%;">
+                    Your username is required.
+                  </div>
+                </div>
+              </div>
+      
+              <div class="mb-3">
+                <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                <input name = "email" type="email" class="form-control" id="email" placeholder="you@example.com">
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
+                </div>
+              </div>
+      
+              <h4 class="mb-3-2">Payment</h4>
+      
+              <div class="d-block my-3">
+                
+                <!--เเก้ชื่อตัวแปรด้วย paypal>banking-->
+                
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="name-card">Name on card</label>
+                    <input name = "name-card" type="text" class="form-control" id="name-card" placeholder="" value="" required>
+                    <p class="displayed">Full name as displayed on card</p>
+                    <div class="invalid-feedback">
+                      Name on card is required.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="credit-number">Credit card number</label>
+                    <input name = "credit-number" type="text" class="form-control" id="credit-number" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                      Credit card number is required.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3 detail-1">
+                    <label for="Expiration">Expiration</label>
+                    <input name = "Expiration" type="text" class="form-control box-1" id="Expiration" placeholder="mm/yy" value="" required>
+                    <div class="invalid-feedback">
+                      Expiration date required.
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3 detail-1">
+                    <label for="Security-code">CVV</label>
+                    <input name = "Security-code" type="text" class="form-control box-1" id="Security-code" placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                      Security code required.
+                    </div>
+                  </div>
+                </div>
+                <center> 
+                  <button type="submit" value="ok" class="btn btn-primary btn-lg" >Continue</button>
+                </center>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="mb-4">
+          
+        </div>
+        <footer class="my-5 pt-5 text-muted text-center text-small">
+          <p class="mb-1">&copy; 2021 Kimetsu No Hotel</p>
+          <ul class="list-inline">
+            
+          </ul>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+          <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="{% static '/JS/form-validation.js' %}"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+      </div>
+    </div>
+  </body>
+</html>

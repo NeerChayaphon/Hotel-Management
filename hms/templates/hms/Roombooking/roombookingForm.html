@@ -1,0 +1,61 @@
+{%  extends 'hms/base.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+<br>
+
+		<div class="row">
+			<div class="col-md">
+                <div class="card card-header bg-danger ">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4 text-left">
+								<h3 class="text-left text-white">Booking ID : {{booking.bookingid}}</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card card-body">
+                    {% if br1 != 0 %}
+                    <div class="col-md-12 text-left">
+                        <h6 class="text-left alert alert-dark">You can't select room number {{bookRoom}}</h6>
+                    </div>
+                    {% endif %}
+					<div class="col-md-12">
+                        <form action="." method='POST' autocomplete="off"> {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{form.roomid|as_crispy_field}}
+                                </div>
+                                <div class="col-md-4">
+                                    {{form.guestamount|as_crispy_field}}
+                                </div>
+                                <div class="col-md-4">
+                                    {{form.additionbed|as_crispy_field}}
+                                </div>
+                                <div class="col-md-4">
+                                    {{form.guestid|as_crispy_field}}
+                                </div>
+                                <div class="col-md-4">
+                                    {{form.breakfast|as_crispy_field}}
+                                </div>
+                         
+                            </div>
+
+                            <div class="container my-3">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" value="save" class="btn btn-outline-success">Submit</button>
+                            </div>
+                            
+                        </form>
+                        
+					</div>
+				</div>
+                
+			</div>
+            
+			
+		</div>
+
+
+{% endblock content %}

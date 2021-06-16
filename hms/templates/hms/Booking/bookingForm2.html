@@ -1,0 +1,49 @@
+{%  extends 'hms/base.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+<br>
+
+		<div class="row">
+			<div class="col-md">
+                <div class="card card-header bg-danger ">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4 text-left">
+								<h3 class="text-left text-white">Booking</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card card-body">
+					<div class="col-md-12">
+                        <form action="." method='POST' autocomplete="off"> {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{form.checkindate|as_crispy_field}}
+                                </div>
+                                <div class="col-md-4">
+                                    {{form.checkoutdate|as_crispy_field}}
+                                </div>
+                                <div class="col-md-4">
+                                    {{form.userid|as_crispy_field}}
+                                </div>
+                                
+                         
+                            </div>
+
+                            <div class="container my-3">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" value="save" class="btn btn-outline-success">Submit</button>
+                            </div>
+                            
+                        </form>
+                        
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+
+{% endblock content %}

@@ -1,0 +1,147 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Hotel Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}">
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Kimetsu no Hotel</a>
+                <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#Booking">Booking</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#Room">Room</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="memberSignIn">Sign In</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead bg-info text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="{% static '/img/hotel.png' %}" alt="..." />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">Kimetsu no Hotel</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+            </div>
+        </header>
+        <!-- Room Section-->
+        <section class="page-section Booking" id="Booking">
+            <div class="container">
+                <h2 class="page-section-heading text-center text-uppercase text-Secondary">Booking</h2>
+                <div class="divider-custom divider-Secondary">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <form action="." method='POST'> {% csrf_token %}
+                    <div class="form-row">
+                      <div class="col-3">
+                        <input name="Check In" placeholder="Check In Date" class="textbox-n form-control" type="text" onfocus="(this.type='date')" id="Check in">
+                      </div>
+                      <div class="col-3">
+                        <input name="Check Out" placeholder="Check Out Date" class="textbox-n form-control" type="text" onfocus="(this.type='date')" id="Check out">
+                      </div>
+                      <div class="col-2">
+                        <input type="number" name="Room" class="form-control" placeholder="Room" id=Room>
+                      </div>
+                      <div class="col-2">
+                        <input type="number" name="Guest" class="form-control" placeholder="Guest" id=Guest>
+                      </div>
+                      <div class="col-2">
+                        <button role="button" type="submit" class="btn btn-primary" id="check">Check Availability</button>
+                      </div>
+                      {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+                    
+                  </form>
+            </div>
+        </section>
+
+                <!-- Room Section-->
+        <section class="page-section Room bg-dark" id="Room">
+            <div class="container">
+                <!-- Room Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-white mb-0">Room</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Room Grid Items-->
+                <div class="row justify-content-center">
+                    <!-- Room Item 1-->
+                    
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+                            <img class="img-fluid" src="{% static '/img/room1.jpg' %}" alt="..." />
+                        </div>
+                        <h5 class="text-center text-white">  </h5>
+                        <h5 class="text-center text-white">Standard Double Room </h5>
+                        
+                    </div>
+                    <!-- Room Item 2-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
+                            <img class="img-fluid" src="{% static '/img/room2.jpg' %}" alt="..." />
+                        </div>
+                        <h5 class="text-center text-white">  </h5>
+                        <h5 class="text-center text-white">Standard Twin Room </h5>
+                    </div>
+                    <!-- Room Item 3-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
+                            <img class="img-fluid" src="{% static '/img/room3.jpg' %}" alt="..." />
+                        </div>
+                        <h5 class="text-center text-white">  </h5>
+                        <h5 class="text-center text-white">Super Deluxe Room </h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <!-- Contact form JS-->
+        <!-- Core theme JS-->
+        <script src="{% static '/JS/scripts.js' %}"></script>
+        
+        
+    </body>
+</html>

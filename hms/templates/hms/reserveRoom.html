@@ -1,0 +1,192 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Hotel Template">
+    <meta name="keywords" content="Hotel, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hotel | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Taviraj:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/flaticon.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/linearicons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/jquery-ui.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/nice-select.css' %} " type="text/css">
+    <link rel="stylesheet" href="{% static '/css/magnific-popup.css' %}"type="text/css">
+    <link rel="stylesheet" href="{% static '/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="top-header">
+        
+        <a class="menu-item brand" href="#">Room Reserve</a>
+        <img class="img-detail" src="data:image/png;base64,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">
+        <a class="menu-item detail1" href="{% url 'landingPage' %}">Home</a>
+        <img class="img-detail" src="data:image/png;base64,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" >
+        <a class="menu-item detail2" href="{% url 'memberLogout' %}">Log out</a>
+    </header>
+    <!-- Header End -->
+
+    <!-- Hero Slider Begin -->
+
+    <!-- Hero Slider End -->
+
+    <!-- Room Availability Section Begin -->
+    <section class="room-availability spad">
+        <div class="container">
+            <div class="room-check">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="room-item">
+                            <div class="room-pic-slider room-pic-item owl-carousel">
+                                <div class="room-pic">
+                                    {% if RoomType.roomtype == 'Standard Double Room' %}
+                                        <img src="{% static '/img/room1.jpg' %}" alt="">
+                                    {% elif RoomType.roomtype == 'Standard Twin Room'%}
+                                        <img src="{% static '/img/room2.jpg' %}" alt="">
+                                    {% else %}
+                                        <img src="{% static '/img/room3.jpg' %}" alt="">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="room-text ">
+                                <div class="room-title">
+                                    <h4 class="text-capitalize text-Secondary">{{RoomType.roomtype}} : <span class="text-danger">{{RoomType.roomprice}} baht</span> </h4>
+                                    <h4 class="text-capitalize text-Secondary">  </h4>
+                                </div>
+                                <div class="room-title">
+                                    <h6 class="text-capitalize text-Secondary">{{RoomType.roomdescription}}</h5>
+                                </div>
+                                <div class="room-features">
+                                    <div class="room-info">
+                                        <img src="{% static '/img/television.png' %}">
+                                        <span>Smart TV</span>
+                                    </div>
+                                    <div class="room-info">
+                                        <img src="{% static '/img/wifi.png' %}">
+                                        <span>High Wi-fi</span>
+                                    </div>
+                                    <div class="room-info">
+                                        <img src="{% static '/img/air-conditioner.png' %}">
+                                        <span>AC</span>
+                                    </div>
+                                    <div class="room-info">
+                                        <img src="{% static '/img/parking.png' %}">
+                                        <span>Parking</span>
+                                    </div>
+                                    <div class="room-info last">
+                                        <img src="{% static '/img/swimming-pool.png' %}">
+                                        <span>Pool</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="check-form">
+                            <h2>Room Reserve</h2>
+                            <form action="." method='POST'> {% csrf_token %}
+                                <div class="datepicker">
+                                    <div class="date-select">
+                                        <p>From</p>
+                                        <input name="Check In" placeholder="Check In Date" class="textbox-n form-control" type="date" id="Check in" value="{{CheckInDate}}">
+                                    </div>
+                                    <div class="date-select to">
+                                        <p>To</p>
+                                        <input name="Check Out" placeholder="Check Out Date" class="textbox-n form-control" type="date" id="Check out" value="{{CheckOutDate}}">
+                                    </div>
+                                </div>
+                                <div class="room-quantity">
+                                    <div class="single-quantity">
+                                        <div class="New-quantity">    
+                                            <p>Room</p>
+                                            <div class="pro-qty"><input type="text" name="Room" id=Room value="{{Room}}"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="single-quantity">
+                                        <p>Guest</p>
+                                        <div class="pro-qty"><input type="text" name="Guest" id=Guest value="{{Guest}}"></div>
+                                    </div>
+                                    <!--checkbox แก้ id checkbox-->
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="EB" class="custom-control-input" id="same-address">
+                                        <label class="custom-control-label" for="same-address">Extra Bed (+500/bed)</label>
+                                        <div class="pro-qty"><input type="text" name="NEB" value="1"></div>
+                                      </div>
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="BF" class="custom-control-input" id="save-info">
+                                        <label class="custom-control-label service-food" for="save-info">Breakfast (+100/person)</label>
+                                        <div class="pro-qty"><input type="text" name="NBF"value="1"></div>
+                                    </div>
+                                </div>
+                                <button role="button" type="submit" class="btn btn-primary" id="check">Continue</button>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bottom-footer">
+        <p class="bottom-font">KIMETSU NO HOTEL</p>
+    </footer>
+    <!--Select services-->
+    
+    <!-- Room Availability Section End -->
+
+    <!-- Facilities Section Begin -->
+
+    <!-- Facilities Section End -->
+
+    <!-- Follow Instagram Section Begin -->
+
+    <!-- Follow Instagram Section End -->
+
+    <!-- Footer Room Pic Section Begin -->
+
+    <!-- Footer Room Pic Section End -->
+
+    <!-- Footer Section Begin -->
+    
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src=" {% static '/JS/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/JS/bootstrap.min.js' %} "></script>
+    <script src="{% static '/JS/jquery.magnific-popup.min.js' %} "></script>
+    <script src="{% static '/JS/jquery-ui.min.js' %} "></script>
+    <script src="{% static '/JS/jquery.nice-select.min.js' %} "></script>
+    <script src="{% static '/JS/jquery.slicknav.js' %} "></script>
+    <script src="{% static '/JS/owl.carousel.min.js' %} "></script>
+    <script src="{% static '/JS/main.js' %}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</body>
+
+</html>

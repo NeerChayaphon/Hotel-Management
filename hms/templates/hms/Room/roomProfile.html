@@ -1,0 +1,70 @@
+{%  extends 'hms/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-header bg-danger ">
+
+				<h3 class="text-left text-white">ID : {{room.roomid}}</h3>
+
+				</div>
+				<div class="card card-body">
+					<div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>Room ID</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{room.roomid}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>Room type</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{room.roomtype.roomtype}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>Room floor</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{room.roomfloor}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4">
+                                <fieldset disabled>
+                                    <div class="Room floor">
+                                        <label>Building</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{room.building}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            
+            
+                           
+                            <div class="container my-3">
+                                <div class="col-md-12 text-center">
+                                    <a type="button" class="btn btn-info" href="{% url 'roomUpdate' room.roomid %}">Update</a>
+
+                                    <form action="{% url 'roomDelete' room.roomid %}" class="d-inline"> {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+
+{% endblock content %}

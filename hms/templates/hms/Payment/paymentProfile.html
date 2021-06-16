@@ -1,0 +1,78 @@
+{%  extends 'hms/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-header bg-dark ">
+
+				<h3 class="text-left text-white">Payment ID : {{payment.paymentid}}</h3>
+
+				</div>
+				<div class="card card-body">
+					<div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>Booking ID</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{payment.bookingid}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>Payment date</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{payment.paymentdate}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4">
+                                <fieldset disabled>
+                                    <div class="Room floor">
+                                        <label>Payment method</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{payment.paymentmethod}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4">
+                                <fieldset disabled>
+                                    <div class="Room floor">
+                                        <label>Payment status</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{payment.paymentstatus}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-4">
+                                <fieldset disabled>
+                                    <div class="Room floor">
+                                        <label>Staff ID</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{payment.staffid}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            
+            
+                           
+                            <div class="container my-3">
+                                <div class="col-md-12 text-center">
+                                    <a type="button" class="btn btn-info" href="{% url 'paymentUpdate' payment.paymentid %}">Update</a>
+
+                                    <form action="{% url 'paymentDelete' payment.paymentid %}" class="d-inline"> {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+
+{% endblock content %}

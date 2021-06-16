@@ -1,0 +1,221 @@
+{%  extends 'hms/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="col-md">
+  <div class="card card-header bg-danger ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h3 class="text-center text-white">Dashboard and Analysis Report</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-12 bg-detail-2">
+        <div class="card card-body">
+          <table class="table table-striped table-bordered table-bordered">              
+            <div class="row">
+              <div class="col-md-12">
+                <h5 class="text-left detail">Today Check In</h5>
+              </div>
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">BookingID</th>
+                  <th scope="col">CheckIn Date</th>
+                  <th scope="col">CheckOut Date</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for x in cin %}
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{x.BookingID}}</td>
+                  <td>{{x.CheckInDate}}</td>
+                  <td>{{x.CheckOutDate}}</td>
+                  <td>{{x.FirstName}} {{x.LastName}}</td>
+                  <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'bookingUpdate' x.BookingID %}">Check In</a>
+                    <a class="btn btn-primary btn-sm" href="{% url 'bookingEachInfo' x.BookingID %}">View</a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </div>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-12 bg-detail-2">
+        <div class="card card-body">
+          <table class="table table-striped table-bordered ">              
+            <div class="row">
+              <div class="col-md-12">
+                <h5 class="text-left detail">Today Check Out</h5>
+              </div>
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">BookingID</th>
+                  <th scope="col">CheckIn Date</th>
+                  <th scope="col">CheckOut Date</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for y in cout %}
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{y.BookingID}}</td>
+                  <td>{{y.CheckInDate}}</td>
+                  <td>{{y.CheckOutDate}}</td>
+                  <td>{{y.FirstName}} {{y.LastName}}</td>
+                  <td>
+                    <a class="btn btn-danger btn-sm" href="{% url 'bookingUpdate' y.BookingID %}">Check Out</a>
+                    <a class="btn btn-primary btn-sm" href="{% url 'bookingEachInfo' y.BookingID %}">View</a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </div>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-12 bg-detail-2">
+        <div class="card card-body">
+          <table class="table table-striped table-bordered">              
+            <div class="row">
+              <div class="col-md-12">
+                <h5 class="text-left detail">Currently Occupied Rooms for Today </h5>
+              </div>
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">BookingID</th>
+                  <th scope="col">RoomID</th>
+                  <th scope="col">CheckIn Date</th>
+                  <th scope="col">CheckOut Date</th>
+                  <th scope="col">RoomType</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for z in roomCheck %}
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{z.BookingID}}</td>
+                  <td>{{z.RoomID}}</td>
+                  <td>{{z.CheckInDate}}</td>
+                  <td>{{z.CheckOutDate}}</td>
+                  <td>{{z.RoomType}}</td>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </div>
+          </table>
+        </div>
+      </div>
+    <!-- Table 1 -->
+    <div class="col-md-12 bg-detail-2">
+      <div class="card card-body">
+        <table class="table table-striped table-bordered">              
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="text-left detail">Number of booking for each person (High to Low)</h5>
+            </div>
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Number of booking</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in first %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.Firstname}}</td>
+                <td>{{i.Lastname}}</td>
+                <td>{{i.NumberofBooking}}</td>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </div>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Table 2 -->
+    <div class="col-md-12 bg-detail-2">
+      <div class="card card-body">
+        <table class="table table-striped table-bordered">              
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="text-left detail">Amount of room for each type that have been booked in 2021</h5>
+            </div>
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">RoomType</th>
+                <th scope="col">Number of room</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for j in second %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{j.RoomType}}</td>
+                <td>{{j.Rcount}}</td>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </div>
+        </table>
+      </div>
+    </div>
+    <!-- Table 3 -->
+    <div class="col-md-12 bg-detail-3">
+      <div class="card card-body">
+        <table class="table table-striped table-bordered">
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="text-left detail">Number of staff of each position and categorize by gender</h5>
+            </div>
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Position</th>
+                <th scope="col">Male</th>
+                <th scope="col">Female</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for k in third %}
+              <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{k.Position}}</td>
+                <td>{{k.Male}}</td>
+                <td>{{k.Female}}</td>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </div>
+        </table>
+      </div>
+    </div>
+  </div>
+</div> 
+</br>
+
+
+{% endblock content %}

@@ -1,0 +1,171 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Hotel Theme</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}">
+        <style>
+          /* Stackoverflow preview fix, please ignore */
+          .navbar-nav {
+            flex-direction: row;
+          }
+          
+          .nav-link {
+            padding-right: .5rem !important;
+            padding-left: .5rem !important;
+          }
+          
+          /* Fixes dropdown menus placed on the right side */
+          .ml-auto .dropdown-menu {
+            left: auto !important;
+            right: 0px;
+          }
+        </style>
+
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <div class="container ml-auto"> 
+          <nav class="navbar ml-auto fixed-top navbar navbar-dark bg-dark">   
+            <a class="navbar-brand" href="{% url 'landingPage' %}">Kimetsu No Hotel</a>
+          <a class="btn btn-danger my-2 my-sm-2" href="{% url 'memberLogout' %}">Logout</a>
+          
+        </nav>
+      </div>
+       
+        <!-- Room Section-->
+        <section class="page-section Booking" id="Booking">
+          <h3 class="text-center text-Secondary">Welcome {{member.firstname}} {{member.lastname}}</h3>
+                <div class="divider-custom divider-Secondary">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+            <div class="container">
+                <form action="." method='POST'> {% csrf_token %}
+                    <div class="form-row">
+                      <div class="col-3">
+                        <input name="Check In" placeholder="Check In Date" class="textbox-n form-control" type="text" onfocus="(this.type='date')" id="Check in">
+                      </div>
+                      <div class="col-3">
+                        <input name="Check Out" placeholder="Check Out Date" class="textbox-n form-control" type="text" onfocus="(this.type='date')" id="Check out">
+                      </div>
+                      <div class="col-2">
+                        <input type="number" name="Room" class="form-control" placeholder="Room" id=Room>
+                      </div>
+                      <div class="col-2">
+                        <input type="number" name="Guest" class="form-control" placeholder="Guest" id=Guest>
+                      </div>
+                      <div class="col-2">
+                        <button role="button" type="submit" class="btn btn-primary" id="check">Check Availability</button>
+                      </div>
+                      {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+                    
+                  </form>
+            </div>
+        </section>
+
+                <!-- Room Section-->
+        <section class="page-section Room bg-light" id="Room">
+            <div class="container">
+                <div class="alert alert-light" role="alert">
+                    <h3 class="text-center text-body">{{CheckInDate}} ⮕ {{CheckOutDate}} for {{NumRoom}} rooms and {{NumGuest}} people</h3>
+                  </div>
+                
+            
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="img-fluid bd-placeholder-img card-img-top" src="{% static '/img/room1.jpg' %}" alt="..." />
+
+            <div class="card-body">
+              <h5 class="text-capitalize text-Secondary">{{StandardDoubleRoom.roomtype}}</h5>
+              <h6 class="text-capitalize text-Secondary">Price : {{StandardDoubleRoom.roomprice}} baht</h6>
+              <p class="card-text">{{StandardDoubleRoom.roomdescription}}.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                {% if oneC < 0 %}
+                    <h6 class="text-capitalize text-danger">{{one}} Room Left.</h6>
+                    <button class="btn btn-danger my-2 my-sm-2" href="" disabled >Not enough room</button>
+                {% else %}
+                    <h6 class="text-capitalize text-Secondary">{{one}} Room Left.</h6>
+                    <a class="btn btn-primary my-2 my-sm-2" href="{% url 'reserveRoom' StandardDoubleRoom.roomtype %}">Book Now!</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="img-fluid bd-placeholder-img card-img-top" src="{% static '/img/room2.jpg' %}" alt="..." />
+            <div class="card-body">
+              <h5 class="text-capitalize text-Secondary">{{StandardTwinRoom.roomtype}}</h5>
+              <h6 class="text-capitalize text-Secondary">Price : {{StandardTwinRoom.roomprice}} baht</h6>
+              <p class="card-text">{{StandardTwinRoom.roomdescription}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                {% if twoC < 0 %}
+                    <h6 class="text-capitalize text-danger">{{two}} Room Left.</h6>
+                    <button class="btn btn-danger my-2 my-sm-2" href="" disabled >Not enough room</button>
+                {% else %}
+                    <h6 class="text-capitalize text-Secondary">{{two}} Room Left.</h6>
+                    <a class="btn btn-primary my-2 my-sm-2" href="{% url 'reserveRoom' StandardTwinRoom.roomtype %}">Book Now!</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <img class="img-fluid bd-placeholder-img card-img-top" src="{% static '/img/room3.jpg' %}" alt="..." />
+          
+            <div class="card-body">
+              <h5 class="text-capitalize text-Secondary">{{SuperDeluxeRoom.roomtype}}</h5>
+              <h6 class="text-capitalize text-Secondary">Price : {{SuperDeluxeRoom.roomprice}} baht</h6>
+              <p class="card-text">{{SuperDeluxeRoom.roomdescription}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                {% if threeC < 0 %}
+                    <h6 class="text-capitalize text-danger">{{three}} Room Left.</h6>
+                    <button class="btn btn-danger my-2 my-sm-2" href="" disabled >Not enough room</button>
+                {% else %}
+                    <h6 class="text-capitalize text-Secondary">{{three}} Room Left.</h6>
+                    <a class="btn btn-primary my-2 my-sm-2" href="{% url 'reserveRoom' SuperDeluxeRoom.roomtype %}">Book Now!</a>
+                {% endif %}
+                </div>
+            </div>
+          </div>
+        </div>
+            </div>
+        </section>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <!-- Contact form JS-->
+        <!-- Core theme JS-->
+        <script src="{% static '/JS/scripts.js' %}"></script>
+        
+        
+    </body>
+</html>

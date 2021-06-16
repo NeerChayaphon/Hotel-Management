@@ -1,0 +1,51 @@
+{%  extends 'hms/base.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+<br>
+
+		<div class="row">
+			<div class="col-md">
+                <div class="card card-header bg-dark ">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4 text-left">
+								<h3 class="text-left text-white">Discount code</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card card-body">
+					<div class="col-md-12">
+                        <form action="." method='POST' autocomplete="off"> {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-4">
+                                    {{form.discountcode|as_crispy_field}}
+                                </div>
+                                <div class="col-md-3">
+                                    {{form.startdate|as_crispy_field}}
+                                </div>
+                                <div class="col-md-3">
+                                    {{form.expiredate|as_crispy_field}}
+                                </div>
+                                <div class="col-md-4">
+                                    {{form.discountpercent|as_crispy_field}}
+                                </div>
+                         
+                            </div>
+
+                            <div class="container my-3">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" value="save" class="btn btn-outline-success">Submit</button>
+                            </div>
+                            
+                        </form>
+                        
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+
+{% endblock content %}

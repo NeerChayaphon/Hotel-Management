@@ -1,0 +1,106 @@
+html,
+body {
+	height: 100%;
+	font-family: "Taviraj", serif;
+	-webkit-font-smoothing: antialiased;
+}
+.area{
+  background: url(https://i.pinimg.com/564x/f3/35/14/f33514ebe6ae4bb7cf81c1061cdcb1c3.jpg);
+  width: 100%;
+  height: auto;
+  background-size: cover;
+}
+.top-header{
+  text-align: center;
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+.detail1{
+  color:black;
+  font-size: 20px;
+}
+.menu-item{
+  color: black;
+  padding: 25px;
+  text-decoration: none;
+}
+.brand{
+  font-size: 35px;
+  font-weight: 800;
+  display: inline-block;
+  width: 90%;
+  padding: 25px;
+}
+.container {
+  background-color: whitesmoke;
+}
+.col-md-4{
+  padding: 20px;
+  text-align: center;
+}
+.mb-3-1{
+  margin-top: 20px;
+}
+.my-5{
+  text-align: center;
+}
+.list-inline-item{
+  margin-bottom: 10px;
+}
+.mb-1{
+  color: black;
+  margin-top: -35px;
+}
+.detail-font{
+  color: black;
+}
+.mb-3-2{
+  margin-top: 40px;
+  margin-bottom: 5px;
+}
+.lh-condensed { 
+  line-height: 1.25; 
+}
+.my-0{
+  margin-left: -20px;
+}
+.my-0-1{
+  margin-left: -30px;
+}
+.col-md-8{
+  background-color: white;
+}
+.mb-3{
+  margin-top: -5px;
+}
+.form-control{
+  margin-bottom: -10px;
+}
+.text-muted-1{
+  color: black;
+}
+.text-success{
+  color: black;
+}
+.btn-primary{
+  margin-top: 45px;
+}
+.col-md-6{
+  margin-top: 20px;
+}
+.displayed{
+  color: grey;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.detail-1{
+  width: 100%;
+}
+.box-1{
+  width: 50%;
+}
+

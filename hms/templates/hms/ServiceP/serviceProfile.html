@@ -1,0 +1,78 @@
+{%  extends 'hms/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-header bg-dark ">
+
+				<h3 class="text-left text-white">ID : {{service.serviceid}} For Booking : {{service.bookingid}} Room : {{service.roomid}}</h3>
+
+				</div>
+				<div class="card card-body">
+					<div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>service</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{service.service}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>bookingid</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{service.bookingid}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>roomid </label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{service.roomid}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            
+                            <div class="col-md-6">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>service details</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{service.servicedetails}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-6">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>price</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{service.price}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                           
+                            <div class="container my-3">
+                                <div class="col-md-12 text-center">
+                                    <a type="button" class="btn btn-info" href="{% url 'serviceUpdate' service.serviceid %}">Update</a>
+
+                                    <form action="{% url 'serviceDelete' service.serviceid %}" class="d-inline"> {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+
+{% endblock content %}

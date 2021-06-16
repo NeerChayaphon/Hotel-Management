@@ -1,0 +1,70 @@
+{%  extends 'hms/base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-header bg-dark ">
+
+				<h3 class="text-left text-white">ID : {{discount.discountcode}} </h3>
+
+				</div>
+				<div class="card card-body">
+					<div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>Discount code</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{discount.discountcode}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>Start date</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{discount.startdate}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-3">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>Expire date </label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{discount.expiredate}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            
+                            <div class="col-md-3">
+                                <fieldset disabled>
+                                    <div class="form-group">
+                                        <label>Discount percent</label>
+                                        <input class="form-control"  aria-describedby="emailHelp" placeholder="{{discount.discountpercent}} ">
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="container my-3">
+                                <div class="col-md-12 text-center">
+                                    <a type="button" class="btn btn-info" href="{% url 'discountUpdate' discount.discountcode %}">Update</a>
+
+                                    <form action="{% url 'discountDelete' discount.discountcode %}" class="d-inline"> {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                        
+                        </div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+
+{% endblock content %}

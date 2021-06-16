@@ -24,9 +24,10 @@ Instructions
 After finish setting up the database
 
   - Add information from the hotel.sql file to your database 
+  - $ cd HotelManagement
   - $ python3 manage.py inspectdb >hms/models.py
   - $ python manage.py makemigrations
   - $ python manage.py migrate
 
 
-4.Runserver $ python manage.py migrate
+4.Runserver $ python manage.py runserver

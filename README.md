@@ -2,6 +2,11 @@
 
 This is the final project of my University Database system course (CPE231). The aim of this project is to understand about the SQL and how to implement in to a web application.
 
+## Created by
+   Kittipol Neamprasertpon
+   Chayaphon Bunyakan
+   Pirada Amornprapawat
+
 Instructions 
 
 1.Set up your virtual environment 
